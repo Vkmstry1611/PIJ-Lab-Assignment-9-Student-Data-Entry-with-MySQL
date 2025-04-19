@@ -56,4 +56,14 @@ public class StudentDAO {
     }
 
     
+    // Deletes student
+    public void deleteStudent(long prn) throws SQLException {
+        String sql = "DELETE FROM students WHERE prn = ?";
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setLong(1, prn);
+            int deleted = pstmt.executeUpdate();
+            if (deleted > 0) System.out.println("Student deleted.");
+            else System.out.println("Student not found.");
+        }
+    }
 }
