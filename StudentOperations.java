@@ -1,7 +1,7 @@
 import java.sql.*;
 import java.util.*;
 
-public class StudentDAO {
+public class StudentOperations {
 
     // Adds a student to the database
     public void addStudent(Student student) throws SQLException {

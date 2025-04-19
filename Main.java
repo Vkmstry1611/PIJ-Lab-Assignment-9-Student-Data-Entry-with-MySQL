@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        StudentDAO dao = new StudentDAO();
+        StudentOperations studoperations = new StudentOperations();
         int choice;
 
         do {
@@ -34,16 +34,16 @@ public class Main {
                         String dob = sc.nextLine();
                         System.out.print("Enter Marks: ");
                         double marks = sc.nextDouble();
-                        dao.addStudent(new Student(prn, name, dob, marks));
+                        studoperations.addStudent(new Student(prn, name, dob, marks));
                         break;
 
                     case 2:
-                        dao.displayStudents();
+                        studoperations.displayStudents();
                         break;
 
                     case 3:
                         System.out.print("Enter PRN: ");
-                        dao.searchByPrn(sc.nextLong());
+                        studoperations.searchByPrn(sc.nextLong());
                         break;
 
                     case 4:
@@ -55,12 +55,12 @@ public class Main {
                         String newDob = sc.nextLine();
                         System.out.print("Enter new Marks: ");
                         double newMarks = sc.nextDouble();
-                        dao.updateStudent(new Student(updPrn, newName, newDob, newMarks));
+                        studoperations.updateStudent(new Student(updPrn, newName, newDob, newMarks));
                         break;
 
                     case 5:
                         System.out.print("Enter PRN to delete: ");
-                        dao.deleteStudent(sc.nextLong());
+                        studoperations.deleteStudent(sc.nextLong());
                         break;
 
                     case 0:
