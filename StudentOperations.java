@@ -16,4 +16,14 @@ public class StudentDAO {
         }
     }
 
+    // Displays all students
+    public void displayStudents() throws SQLException {
+        String sql = "SELECT * FROM students";
+        try (Connection conn = DBConnection.getConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                System.out.printf("PRN: %d, Name: %s, DOB: %s, Marks: %.2f%n", rs.getLong("prn"), rs.getString("name"), rs.getString("dob"), rs.getDouble("marks"));
+            }
+        }
+    }
+
 }
