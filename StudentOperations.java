@@ -39,4 +39,21 @@ public class StudentDAO {
             }
         }
     }
+
+
+        // Updates student
+    public void updateStudent(Student student) throws SQLException {
+        String sql = "UPDATE students SET name = ?, dob = ?, marks = ? WHERE prn = ?";
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, student.getName());
+            pstmt.setString(2, student.getDob());
+            pstmt.setDouble(3, student.getMarks());
+            pstmt.setLong(4, student.getPrn());
+            int updated = pstmt.executeUpdate();
+            if (updated > 0) System.out.println("Student updated.");
+            else System.out.println("Student not found.");
+        }
+    }
+
+    
 }
